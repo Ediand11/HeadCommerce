@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/logo-colored.svg";
 import { Container } from "../Container";
-import { AccountIcon } from "../icons/AccountIcon";
 import { ShoppingBasketIcon } from "../icons/ShoppingBasketIcon";
+import { Dropdown } from "./Dropdown";
 import style from "./Header.module.scss";
 
 const Header = () => {
@@ -16,8 +16,7 @@ const Header = () => {
           </Link>
 
           <div className={style.link}>
-            <AccountIcon />
-            <span>Coin</span>
+            <Dropdown />
           </div>
           <Link className={style.link} href={"/cart"}>
             <ShoppingBasketIcon />
