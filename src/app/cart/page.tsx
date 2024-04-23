@@ -1,6 +1,8 @@
 import { Block } from "@/src/components/Block";
 import { Cart } from "@/src/components/Cart";
 import { Container } from "@/src/components/Container";
+import Coupon from "@/src/components/Coupon/Coupon";
+import { Payment } from "@/src/components/Payment";
 import style from "./page.module.scss";
 
 const page = () => {
@@ -13,9 +15,13 @@ const page = () => {
           <Block>
             <Cart />
           </Block>
-          <div>
-            <Block>Купоны</Block>
-            <Block>Оплата</Block>
+          <div className={style.blocks}>
+            <Block>
+              <Coupon />
+            </Block>
+            <Block>
+              <Payment />
+            </Block>
           </div>
         </div>
       </div>

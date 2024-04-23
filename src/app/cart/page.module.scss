@@ -1,5 +1,6 @@
+@use "../media.scss";
 .cart {
-  max-width: 1180px;
+  // max-width: 1180px;
   padding: 28px 0;
 
   h1 {
@@ -13,4 +14,16 @@
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 20px;
+}
+
+.blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@include media.md {
+  .cont {
+    grid-template-columns: 1fr;
+  }
 }

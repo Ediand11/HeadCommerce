@@ -1,0 +1,74 @@
+.check {
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--gray-600);
+}
+
+.discount {
+  margin-bottom: 18px;
+  color: var(--red);
+}
+
+.sum {
+  border-top: var(--border);
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--dark);
+}
+
+.currency {
+  display: flex;
+  padding: 10px;
+  width: 100%;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark);
+
+  border: var(--border);
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 0 20px;
+  height: 54px;
+  width: 100%;
+
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+
+  border: 0;
+  border-radius: 8px;
+  background: var(--green);
+
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #039d17;
+  }
+
+  &:active {
+    transform: scale(0.98);
+    transition-duration: 0.1s;
+  }
+}
