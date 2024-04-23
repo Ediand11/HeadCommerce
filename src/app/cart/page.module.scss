@@ -1,0 +1,16 @@
+.cart {
+  max-width: 1180px;
+  padding: 28px 0;
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+}
+
+.cont {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}

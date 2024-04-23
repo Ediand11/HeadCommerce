@@ -1,0 +1,41 @@
+@mixin custom($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media only screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media only screen and (max-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin xmd {
+  @media only screen and (max-width: 900px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media only screen and (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media only screen and (max-width: 414px) {
+    @content;
+  }
+}

@@ -1,0 +1,28 @@
+@use "./media.scss";
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 925px;
+  margin: 42px auto;
+}
+
+@include media.xmd {
+  .items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@include media.md {
+  .items {
+    gap: 10px;
+    margin: 20px auto;
+  }
+}
+
+@include media.sm {
+  .items {
+    grid-template-columns: minmax(0, 340px);
+    justify-content: center;
+  }
+}
