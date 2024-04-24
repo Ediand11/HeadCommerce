@@ -1,16 +1,22 @@
-import { Card } from "../components/Card";
-import CardSkeleton from "../components/Card/CardSkeleton";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 import { Container } from "../components/Container";
-import style from "./page.module.scss";
+import { getProducts } from "../components/getProducts";
+import { Products } from "../components/Products";
 
-export default function Home() {
+export default async function Home() {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchInfiniteQuery({
+    queryKey: ["products"],
+    queryFn: getProducts,
+    initialPageParam: 0,
+  });
+
   return (
     <Container>
-      <div className={style.items}>
-        <CardSkeleton />
-        {[1, 2, 3, 4, 5].map((item, ind) => (
-          <Card key={ind} />
-        ))}
+      <div>
+        <HydrationBoundary state={dehydrate(queryClient)}>
+          <Products />
+        </HydrationBoundary>
       </div>
     </Container>
   );

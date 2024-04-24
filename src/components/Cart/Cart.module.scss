@@ -162,4 +162,16 @@
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  .item {
+    display: block;
+  }
+
+  .detail {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

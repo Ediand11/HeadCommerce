@@ -42,4 +42,9 @@
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
   }
+
+  &:disabled {
+    background-color: var(--gray-600);
+    border-color: var(--primary-dark);
+  }
 }
