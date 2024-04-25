@@ -12,6 +12,12 @@ const Payment = () => {
   const dispatch = useAppDispatch();
 
   const [currencySelected, setCurrencySelected] = useState<"coin" | "dollar">("dollar");
+  const symbolCurrency = currencySelected === "coin" ? "C" : "$";
+
+  const totalPriceWithSymbol = symbolCurrency + totalPrice;
+  const discountedPriceWithSymbol = symbolCurrency + discountedPrice;
+  const discountWithSymbol = symbolCurrency + (discountedPrice - totalPrice);
+
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrencySelected(event.target.value as "coin" | "dollar");
   };
@@ -20,17 +26,17 @@ const Payment = () => {
       <div className={style.check}>
         <p className={style.row}>
           Subtotal:
-          <span>${discountedPrice}</span>
+          <span>{discountedPriceWithSymbol}</span>
         </p>
         <p className={style.row}>
           Discount:
-          <span className={style.discount}>- ${discountedPrice - totalPrice}</span>
+          <span className={style.discount}>-{discountWithSymbol}</span>
         </p>
       </div>
 
       <div className={style.sum}>
         <h2 className={style.title}>
-          Total: <span>${totalPrice}</span>
+          Total: <span>{totalPriceWithSymbol}</span>
         </h2>
         <select className={style.currency} value={currencySelected} onChange={handleCurrencyChange}>
           <option value="dollar">Dollar</option>
