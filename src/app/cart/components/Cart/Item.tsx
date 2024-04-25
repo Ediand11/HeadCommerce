@@ -1,3 +1,5 @@
+import { changeQuantity, removeFromCart } from "@/src/store/cartSlice";
+import { useAppDispatch } from "@/src/store/hooks";
 import Image from "next/image";
 import style from "./Cart.module.scss";
 
@@ -9,7 +11,9 @@ interface Item {
   quantity: number;
 }
 
-const Item = ({ thumbnail, title, price, quantity }: Item) => {
+const Item = ({ id, thumbnail, title, price, quantity }: Item) => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className={style.item}>
       <div className={style.info}>
@@ -18,15 +22,25 @@ const Item = ({ thumbnail, title, price, quantity }: Item) => {
         </div>
         <div>
           <h2 className={style.title}>{title}</h2>
-          <button className={style.remove}>Remove</button>
+          <button className={style.remove} onClick={() => dispatch(removeFromCart({ id }))}>
+            Remove
+          </button>
         </div>
       </div>
       <div className={style.detail}>
         <p className={style.price}>${price}</p>
         <div className={style.count}>
-          <button>-</button>
+          <button
+            onClick={() =>
+              quantity === 1
+                ? dispatch(removeFromCart({ id }))
+                : dispatch(changeQuantity({ id, operation: "down" }))
+            }
+          >
+            -
+          </button>
           <span>{quantity}</span>
-          <button>+</button>
+          <button onClick={() => dispatch(changeQuantity({ id, operation: "up" }))}>+</button>
         </div>
       </div>
     </div>

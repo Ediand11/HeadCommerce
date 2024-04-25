@@ -1,8 +1,8 @@
 import { Cart } from "@/src/app/cart/components/Cart";
-import Coupon from "@/src/app/cart/components/Coupon/Coupon";
 import { Payment } from "@/src/app/cart/components/Payment";
 import { Block } from "@/src/components/Block";
 import { Container } from "@/src/components/Container";
+import { Convertor } from "./components/Convertor/Index";
 import style from "./page.module.scss";
 
 const page = () => {
@@ -17,7 +17,7 @@ const page = () => {
           </Block>
           <div className={style.blocks}>
             <Block>
-              <Coupon />
+              <Convertor />
             </Block>
             <Block>
               <Payment />

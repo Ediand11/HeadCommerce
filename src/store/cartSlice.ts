@@ -24,6 +24,14 @@ export const cartSlice = createSlice({
         state.push({ ...action.payload, quantity: 1 });
       }
     },
+    changeQuantity: (state, action: PayloadAction<{ id: number; operation: "up" | "down" }>) => {
+      const { id, operation } = action.payload;
+      const itemToModify = state.find((item) => item.id === id);
+
+      if (itemToModify) {
+        itemToModify.quantity += operation === "up" ? 1 : operation === "down" ? -1 : 0;
+      }
+    },
 
     removeFromCart: (state, action: PayloadAction<{ id: number }>) => {
       const { id } = action.payload;
@@ -36,9 +44,13 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, changeQuantity, clearCart } = cartSlice.actions;
 
 export const selectProducts = (state: RootState) => state.cartSlice;
 export const selectProductLength = (state: RootState) => state.cartSlice.length;
+export const selectTotalPrice = (state: RootState) =>
+  state.cartSlice.reduce((acc, item) => (acc += item.price * item.quantity), 0);
+export const selectDiscount = (state: RootState) =>
+  state.cartSlice.reduce((acc, item) => (acc += item.discountedPrice * item.quantity), 0);
 
 export default cartSlice.reducer;

@@ -1,28 +1,49 @@
+"use client";
+
+import { selectDiscount, selectTotalPrice } from "@/src/store/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/src/store/hooks";
+import { successPurchase } from "@/src/store/walletSlice";
+import { useState } from "react";
 import style from "./Payment.module.scss";
 
 const Payment = () => {
+  const totalPrice = useAppSelector(selectTotalPrice);
+  const discountedPrice = useAppSelector(selectDiscount);
+  const dispatch = useAppDispatch();
+
+  const [currencySelected, setCurrencySelected] = useState<"coin" | "dollar">("dollar");
+  const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setCurrencySelected(event.target.value as "coin" | "dollar");
+  };
   return (
     <>
       <div className={style.check}>
         <p className={style.row}>
           Subtotal:
-          <span>$1534.97</span>
+          <span>${discountedPrice}</span>
         </p>
         <p className={style.row}>
           Discount:
-          <span className={style.discount}>- $44.00</span>
+          <span className={style.discount}>- ${discountedPrice - totalPrice}</span>
         </p>
       </div>
 
       <div className={style.sum}>
         <h2 className={style.title}>
-          Total: <span>$1357.97</span>
+          Total: <span>${totalPrice}</span>
         </h2>
-        <select className={style.currency}>
+        <select className={style.currency} value={currencySelected} onChange={handleCurrencyChange}>
           <option value="dollar">Dollar</option>
-          <option value="Coin">Coin</option>
+          <option value="coin">Coin</option>
         </select>
-        <button className={style.button}>Checkout</button>
+        <button
+          className={style.button}
+          onClick={() =>
+            dispatch(successPurchase({ price: totalPrice, currency: currencySelected }))
+          }
+        >
+          Checkout
+        </button>
       </div>
     </>
   );
