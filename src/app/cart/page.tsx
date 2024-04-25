@@ -2,7 +2,7 @@ import { Cart } from "@/src/app/cart/components/Cart";
 import { Payment } from "@/src/app/cart/components/Payment";
 import { Block } from "@/src/components/Block";
 import { Container } from "@/src/components/Container";
-import { Convertor } from "./components/Convertor/Index";
+import { Convertor } from "./components/Convertor";
 import style from "./page.module.scss";
 
 const page = () => {
