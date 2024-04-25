@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { CartData, Product } from "../../types";
 import { Button } from "../Button";
 import { Card } from "../Card";
-import CardSkeleton from "../Card/CardSkeleton";
+import { CardsSkeleton } from "../Card/CardSkeleton";
 import style from "./Products.module.scss";
 
 const TOTAL_ITEMS = 100;
@@ -34,16 +34,7 @@ const Products = () => {
         {products.map((product, ind) => (
           <Card key={product.id + product.title + ind} {...product} />
         ))}
-        {isFetching && (
-          <>
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-            <CardSkeleton />
-          </>
-        )}
+        {isFetching && <CardsSkeleton count={6} />}
       </div>
       <div className={style.button}>
         {hasMore && (

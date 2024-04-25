@@ -29,7 +29,7 @@ export const cartSlice = createSlice({
       const itemToModify = state.find((item) => item.id === id);
 
       if (itemToModify) {
-        itemToModify.quantity += operation === "up" ? 1 : operation === "down" ? -1 : 0;
+        operation === "up" ? itemToModify.quantity++ : itemToModify.quantity--;
       }
     },
 

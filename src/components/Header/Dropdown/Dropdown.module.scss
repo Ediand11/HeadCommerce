@@ -1,8 +1,8 @@
-.dropdown {
+.root {
   position: relative;
 }
 
-.link {
+.button {
   position: relative;
 
   display: flex;
@@ -26,7 +26,7 @@
   }
 }
 
-.dropdownMenu {
+.list {
   position: absolute;
   top: 100%;
   left: 0;
@@ -37,15 +37,21 @@
   border: var(--border);
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.dropdownMenu li {
+.list li {
   padding: 8px 12px;
-  border-bottom: var(--border);
-  text-wrap: nowrap;
+  white-space: nowrap;
   cursor: pointer;
+  transition: all 0.5s linear;
+
+  &:not(:last-child) {
+    border-bottom: var(--border);
+  }
 }
 
-.dropdownMenu li:hover {
-  background-color: #f0f0f0;
+.list li:hover {
+  background-color: var(--primary);
+  color: #fff;
 }

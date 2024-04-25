@@ -31,4 +31,13 @@
     grid-template-columns: minmax(0, 340px);
     justify-content: center;
   }
+
+  .button {
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+
+  .button * {
+    width: 100%;
+  }
 }

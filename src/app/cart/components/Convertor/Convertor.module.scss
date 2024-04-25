@@ -7,12 +7,16 @@
 }
 
 .form {
-  display: inline-flex;
-  width: 100%;
+  display: flex;
+
+  button {
+    border-radius: 0 10px 10px 0;
+  }
 }
 
 .input {
-  flex: 1; /* Занимать всю доступную ширину */
+  flex: 1;
+  min-width: 0;
   padding: 6px 8px;
 
   border: var(--border);
@@ -25,8 +29,4 @@
   &:active {
     border-color: var(--primary);
   }
-}
-
-.button {
-  border-radius: 0 10px 10px 0;
 }

@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from "@/src/store/hooks";
 import { addCoin } from "@/src/store/walletSlice";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button } from "../../../../components/Button";
 import style from "./Convertor.module.scss";
 
@@ -15,7 +15,8 @@ const Convertor = () => {
     setConvert(inputValue);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
     const convertedValue = parseInt(convert, 10);
     if (!isNaN(convertedValue)) {
       dispatch(addCoin(convertedValue));
@@ -26,7 +27,7 @@ const Convertor = () => {
   return (
     <>
       <h2 className={style.title}>Convertor Dollar to Coin</h2>
-      <div className={style.form}>
+      <form onSubmit={handleSubmit} className={style.form}>
         <input
           className={style.input}
           placeholder="1000"
@@ -34,10 +35,8 @@ const Convertor = () => {
           value={convert}
           onChange={handleChange}
         />
-        <Button className={style.button} onClick={handleSubmit}>
-          Apply
-        </Button>
-      </div>
+        <Button type="submit">Apply</Button>
+      </form>
     </>
   );
 };

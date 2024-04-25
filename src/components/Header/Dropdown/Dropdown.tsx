@@ -29,13 +29,13 @@ const Dropdown = () => {
   };
 
   return (
-    <div className={style.dropdown} onMouseLeave={handleCurrencySelection}>
-      <div className={style.link} onClick={toggleDropdown}>
+    <div className={style.root} onMouseLeave={handleCurrencySelection}>
+      <div className={style.button} onClick={toggleDropdown}>
         <AccountIcon />
         <span>Wallet</span>
       </div>
       {isOpen && (
-        <ul className={style.dropdownMenu}>
+        <ul className={style.list}>
           {currencies.map((currency, index) => (
             <li key={index} onClick={() => handleCurrencySelection()}>
               {`${currency.currency} ${currency.wallet}`}

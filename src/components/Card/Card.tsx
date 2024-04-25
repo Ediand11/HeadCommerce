@@ -1,17 +1,12 @@
-import { ProductSlice } from "@/src/store/cartSlice";
+import { addToCart, ProductSlice } from "@/src/store/cartSlice";
+import { useAppDispatch } from "@/src/store/hooks";
 import Image from "next/image";
-import { ButtonToCart } from "./ButtonToCart";
+import { CartIcon } from "../icons/CartIcon";
 import style from "./Card.module.scss";
 
 const Card = ({ id, title, price, discountedPrice, thumbnail, quantity }: ProductSlice) => {
-  const items = {
-    id,
-    title,
-    price,
-    discountedPrice,
-    thumbnail,
-    quantity,
-  };
+  const dispatch = useAppDispatch();
+
   return (
     <article className={style.root}>
       <div className={style.image}>
@@ -24,7 +19,14 @@ const Card = ({ id, title, price, discountedPrice, thumbnail, quantity }: Produc
             <strong>${price}</strong>
             <span>${discountedPrice}</span>
           </div>
-          <ButtonToCart {...items} className={style.cart} />
+          <button
+            className={style.cart}
+            onClick={() =>
+              dispatch(addToCart({ id, title, price, discountedPrice, thumbnail, quantity }))
+            }
+          >
+            <CartIcon />
+          </button>
         </div>
       </div>
     </article>
