@@ -16,7 +16,7 @@ const Payment = () => {
 
   const totalPriceWithSymbol = symbolCurrency + totalPrice;
   const discountedPriceWithSymbol = symbolCurrency + discountedPrice;
-  const discountWithSymbol = symbolCurrency + (discountedPrice - totalPrice);
+  const discountWithSymbol = symbolCurrency + Math.abs(discountedPrice - totalPrice);
 
   const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCurrencySelected(event.target.value as "coin" | "dollar");
