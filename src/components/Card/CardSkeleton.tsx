@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import Skeleton from "../Skeleton/Skeleton";
 import style from "./Card.module.scss";
-
 const CardSkeleton = () => {
   return (
     <div className={style.root}>

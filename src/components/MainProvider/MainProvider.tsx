@@ -2,8 +2,9 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import StoreProvider from "./StoreProvider";
 
-const Provider = ({ children }: { children: React.ReactNode }) => {
+const MainProvider = ({ children }: { children: React.ReactNode }) => {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -16,7 +17,11 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
         },
       })
   );
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <StoreProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </StoreProvider>
+  );
 };
 
-export default Provider;
+export default MainProvider;

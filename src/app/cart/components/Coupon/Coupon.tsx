@@ -1,4 +1,4 @@
-import { Button } from "../Button";
+import { Button } from "../../../../components/Button";
 import style from "./Coupon.module.scss";
 
 const Coupon = () => {

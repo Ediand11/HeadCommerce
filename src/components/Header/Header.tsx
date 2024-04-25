@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../public/logo-colored.svg";
 import { Container } from "../Container";
-import { ShoppingBasketIcon } from "../icons/ShoppingBasketIcon";
 import { Dropdown } from "./Dropdown";
 import style from "./Header.module.scss";
+import { ShoppingBasket } from "./ShoppingBasket";
 
 const Header = () => {
   return (
@@ -19,9 +19,7 @@ const Header = () => {
             <Dropdown />
           </div>
           <Link className={style.link} href={"/cart"}>
-            <ShoppingBasketIcon />
-            <span>My Cart</span>
-            <span className={style.count}>4</span>
+            <ShoppingBasket className={style.count} />
           </Link>
         </div>
       </Container>

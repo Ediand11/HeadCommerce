@@ -3,18 +3,18 @@ import style from "./Cart.module.scss";
 
 interface Item {
   id: number;
-  imageUrl: string;
+  thumbnail: string;
   title: string;
   price: number;
-  count: number;
+  quantity: number;
 }
 
-const Item = ({ imageUrl, title, price, count }: Item) => {
+const Item = ({ thumbnail, title, price, quantity }: Item) => {
   return (
     <div className={style.item}>
       <div className={style.info}>
         <div className={style.image}>
-          <Image src={imageUrl} alt="item" width={53} height={60} />
+          <Image src={thumbnail} alt="item" width={53} height={60} />
         </div>
         <div>
           <h2 className={style.title}>{title}</h2>
@@ -25,7 +25,7 @@ const Item = ({ imageUrl, title, price, count }: Item) => {
         <p className={style.price}>${price}</p>
         <div className={style.count}>
           <button>-</button>
-          <span>{count}</span>
+          <span>{quantity}</span>
           <button>+</button>
         </div>
       </div>

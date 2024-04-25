@@ -1,6 +1,6 @@
 import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import { getProducts } from "../api/getProducts";
 import { Container } from "../components/Container";
-import { getProducts } from "../components/getProducts";
 import { Products } from "../components/Products";
 
 export default async function Home() {

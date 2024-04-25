@@ -1,14 +1,17 @@
+import { ProductSlice } from "@/src/store/cartSlice";
 import Image from "next/image";
-import { CartIcon } from "../icons/CartIcon";
-import { Product } from "../types";
+import { ButtonToCart } from "./ButtonToCart";
 import style from "./Card.module.scss";
 
-const Card = ({
-  title,
-  price,
-  discountedPrice,
-  thumbnail,
-}: Pick<Product, "title" | "price" | "discountedPrice" | "thumbnail">) => {
+const Card = ({ id, title, price, discountedPrice, thumbnail, quantity }: ProductSlice) => {
+  const items = {
+    id,
+    title,
+    price,
+    discountedPrice,
+    thumbnail,
+    quantity,
+  };
   return (
     <article className={style.root}>
       <div className={style.image}>
@@ -21,9 +24,7 @@ const Card = ({
             <strong>${price}</strong>
             <span>${discountedPrice}</span>
           </div>
-          <button className={style.cart}>
-            <CartIcon />
-          </button>
+          <ButtonToCart {...items} className={style.cart} />
         </div>
       </div>
     </article>

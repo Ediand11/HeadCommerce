@@ -1,11 +1,11 @@
 "use client";
 
+import { getProducts } from "@/src/api/getProducts";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { CartData, Product } from "../../types";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import CardSkeleton from "../Card/CardSkeleton";
-import { getProducts } from "../getProducts";
-import { CartData, Product } from "../types";
 import style from "./Products.module.scss";
 
 const TOTAL_ITEMS = 100;
