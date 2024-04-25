@@ -26,6 +26,10 @@ const Products = () => {
     products = carts.map(({ products }) => products).flat(1);
   }
 
+  const fetchNext = () => {
+    fetchNextPage();
+  };
+
   const hasMore = products.length < TOTAL_ITEMS;
 
   return (
@@ -37,14 +41,9 @@ const Products = () => {
         {isFetching && <CardsSkeleton count={6} />}
       </div>
       <div className={style.button}>
-        {hasMore && (
-          <Button
-            theme={"primary"}
-            onClick={() => {
-              fetchNextPage();
-            }}
-          >
-            {isFetching ? "Loading..." : "Show More"}
+        {hasMore && !isFetching && (
+          <Button theme={"primary"} onClick={fetchNext}>
+            Show More
           </Button>
         )}
       </div>
