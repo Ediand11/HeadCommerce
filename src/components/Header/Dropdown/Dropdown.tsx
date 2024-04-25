@@ -29,7 +29,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className={style.dropdown}>
+    <div className={style.dropdown} onMouseLeave={handleCurrencySelection}>
       <div className={style.link} onClick={toggleDropdown}>
         <AccountIcon />
         <span>Wallet</span>
