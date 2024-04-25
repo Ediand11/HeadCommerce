@@ -82,6 +82,7 @@
   &:active {
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.7);
     transition: all 0.1s linear;
+    transform: scale(1.1); /* Увеличиваем элемент в 1.1 раза */
   }
 }
 
