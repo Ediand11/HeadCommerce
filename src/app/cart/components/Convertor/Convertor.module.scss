@@ -15,8 +15,8 @@
 }
 
 .input {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1;
+  width: 100%;
   padding: 6px 8px;
 
   border: var(--border);
