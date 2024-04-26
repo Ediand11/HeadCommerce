@@ -1,3 +1,4 @@
+import { throttle } from "@/src/helper/throttle";
 import { addToCart, ProductSlice } from "@/src/store/cartSlice";
 import { useAppDispatch } from "@/src/store/hooks";
 import Image from "next/image";
@@ -6,6 +7,10 @@ import style from "./Card.module.scss";
 
 const Card = ({ id, title, price, discountedPrice, thumbnail, quantity }: ProductSlice) => {
   const dispatch = useAppDispatch();
+  const throttledFunction = throttle(
+    () => dispatch(addToCart({ id, title, price, discountedPrice, thumbnail, quantity })),
+    1000
+  );
 
   return (
     <article className={style.root}>
@@ -19,12 +24,7 @@ const Card = ({ id, title, price, discountedPrice, thumbnail, quantity }: Produc
             <strong>${price}</strong>
             <span>${discountedPrice}</span>
           </div>
-          <button
-            className={style.cart}
-            onClick={() =>
-              dispatch(addToCart({ id, title, price, discountedPrice, thumbnail, quantity }))
-            }
-          >
+          <button className={style.cart} onClick={throttledFunction}>
             <CartIcon />
           </button>
         </div>
