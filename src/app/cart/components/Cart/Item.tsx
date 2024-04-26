@@ -28,7 +28,7 @@ const Item = ({ id, thumbnail, title, price, quantity }: Item) => {
         </div>
       </div>
       <div className={style.detail}>
-        <p className={style.price}>${price}</p>
+        <p className={style.price}>${price * quantity}</p>
         <div className={style.count}>
           <button
             onClick={() =>
